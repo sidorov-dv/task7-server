@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
+const dotenv = require("dotenv");
 const http = require("http");
 const server = http.createServer(app);
 const io = require("socket.io")(server, { cors: { origin: "*" } });
+
+dotenv.config();
+
+const PORT = process.env.PORT || 5555;
 
 io.on("connection", (socket) => {
   console.log("User Connected");
@@ -26,6 +31,4 @@ app.get("/", (req, res) => {
   res.send("Welcome to tic-tac-toe app!");
 });
 
-server.listen(5555, () =>
-  console.log("server starts on http://localhost:5555")
-);
+server.listen(PORT, () => console.log(`server starts on ${PORT}`));
