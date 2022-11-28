@@ -22,6 +22,10 @@ io.on("connection", (socket) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.send("Welcome to tic-tac-toe app!");
+});
+
 server.listen(5555, () =>
   console.log("server starts on http://localhost:5555")
 );
